@@ -5,11 +5,29 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
-            Liquid Text Trails <link rel="stylesheet" href="style.css">
+            Liquid Text Trails
         </title>
+        <link rel="stylesheet" href="style.css?v10">
     </head>
     <body>
         <canvas id="canvas1"></canvas>
-        <script src="app.js?v1"></script>
+        <svg>
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur
+                        in="SourceGraphic"
+                        stdDeviation="10"
+                        result="blur"
+                    />
+                    <feColorMatrix
+                        in="blur"
+                        mode="matrix"
+                        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9 "
+                    />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+            </defs>
+        </svg>
+        <script src="app.js?v10"></script>
     </body>
 </html>

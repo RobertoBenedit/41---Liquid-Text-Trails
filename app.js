@@ -144,7 +144,7 @@ canvas.addEventListener("mouseenter", () => {
     autopilot = undefined;
 });
 
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
+// window.addEventListener("resize", () => {
+//     canvas.width = window.innerWidth;
+//     canvas.height = window.innerHeight;
+// });
