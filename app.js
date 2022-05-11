@@ -7,8 +7,8 @@ ctx.textBaseline = "middle";
 let letterArray = ["R", "O", "C", "O", "M", "U", "N", "I", "C", "A"];
 let hue = 0;
 let particles = [];
-// let numberOfParticles = (canvas.width * canvas.height) / 5000;
-let numberOfParticles = 20;
+let numberOfParticles = (canvas.width * canvas.height) / 5000;
+// let numberOfParticles = 20;
 
 const mouse = {
     x: 0,
@@ -20,6 +20,11 @@ const mouse = {
 window.addEventListener("mousemove", (event) => {
     mouse.x = event.x;
     mouse.y = event.y;
+});
+// make it for movile devices
+window.addEventListener(touchstart, (event) => {
+    mouse.x = event.touches[0].clientX;
+    mouse.y = event.touches[0].clientY;
 });
 
 class Particle {
@@ -48,13 +53,13 @@ function handleOverlap() {
         let randomAngle = Math.random() * Math.PI * 2;
         let randomRadius = mouse.radius * Math.sqrt(Math.random());
         let particle = {
-            x:mouse.x + randomRadius * Math.cos(randomAngle),
-            y:mouse.y + randomRadius * Math.sin(randomAngle),
+            x: mouse.x + randomRadius * Math.cos(randomAngle),
+            y: mouse.y + randomRadius * Math.sin(randomAngle),
             radius: Math.floor(Math.random() * 30) + 10,
-        }
+        };
         overlaping = false;
         for (let i = 0; i < particles.length; i++) {
-            let previousParticle = particles[ i ];
+            let previousParticle = particles[i];
             let dx = particle.x - previousParticle.x;
             let dy = particle.y - previousParticle.y;
             let distance = Math.sqrt(dx * dx + dy * dy);
@@ -64,15 +69,17 @@ function handleOverlap() {
             }
         }
         if (!overlaping) {
-            particles.unshift(new Particle(particle.x, particle.y, particle.radius));
+            particles.unshift(
+                new Particle(particle.x, particle.y, particle.radius)
+            );
         }
         counter++;
     }
 }
 
-    // for (let i = 0; i < numberOfParticles; i++) {
-    //     particles.unshift(new Particle(mouse.x, mouse.y, 20));
-    // }
+// for (let i = 0; i < numberOfParticles; i++) {
+//     particles.unshift(new Particle(mouse.x, mouse.y, 20));
+// }
 
 handleOverlap();
 
