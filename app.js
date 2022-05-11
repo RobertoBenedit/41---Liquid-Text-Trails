@@ -22,7 +22,7 @@ window.addEventListener("mousemove", (event) => {
     mouse.y = event.y;
 });
 // make it for movile devices
-window.addEventListener(touchstart, (event) => {
+window.addEventListener("touchmove", (event) => {
     mouse.x = event.touches[0].clientX;
     mouse.y = event.touches[0].clientY;
 });
