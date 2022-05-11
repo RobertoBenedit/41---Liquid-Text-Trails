@@ -39,13 +39,20 @@ class Particle {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         ctx.fillStyle = this.color;
-        ctx.closePath();
         ctx.fill();
+        ctx.closePath();
 
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius * 0.8, 0, Math.PI * 1.5,true);
+        ctx.arc(this.x, this.y, this.radius * 0.8, 0, Math.PI * 1.5, true);
         ctx.fillStyle = "white";
         ctx.fill();
+        ctx.closePath();
+
+        // ctx.beginPath();
+        ctx.fillStyle = "white";
+        ctx.strokeStyle = "black";
+        ctx.font = `bold ${this.radius}px roboto`;
+        ctx.fillText(this.text, this.x - this.radius/2.7, this.y + this.radius/10);
     }
 }
 
