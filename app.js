@@ -41,6 +41,11 @@ class Particle {
         ctx.fillStyle = this.color;
         ctx.closePath();
         ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius * 0.8, 0, Math.PI * 1.5,true);
+        ctx.fillStyle = "white";
+        ctx.fill();
     }
 }
 
@@ -89,7 +94,7 @@ function animate() {
         particles[i].draw();
     }
     if (particles.length >= numberOfParticles) {
-        for (let i = 0; i < 18; i++) {
+        for (let i = 0; i < 5; i++) {
             particles.pop();
         }
     }
