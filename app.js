@@ -7,7 +7,7 @@ ctx.textBaseline = "middle";
 let letterArray = ["R", "O", "C", "O", "M", "U", "N", "I", "C", "A"];
 let hue = 0;
 let particles = [];
-let numberOfParticles = (canvas.width * canvas.height) / 7000;
+let numberOfParticles = (canvas.width * canvas.height) / 10000;
 
 const mouse = {
     x: 0,
@@ -67,7 +67,7 @@ class Particle {
             mouse.x = newX + canvas.width / 2;
             mouse.y = newY + canvas.height / 2;
         }
-        mouse.autopilotAngle += 0.05;
+        mouse.autopilotAngle += 0.02;
     }
 }
 
