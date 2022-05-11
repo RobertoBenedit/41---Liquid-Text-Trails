@@ -44,10 +44,35 @@ function handleOverlap() {
     let protection = 500;
     let counter = 0;
 
-    for (let i = 0; i < numberOfParticles; i++) {
-        particles.unshift(new Particle(mouse.x, mouse.y, 20));
+    while (particles.length < numberOfParticles && counter < protection) {
+        let randomAngle = Math.random() * Math.PI * 2;
+        let randomRadius = mouse.radius * Math.sqrt(Math.random());
+        let particle = {
+            x:mouse.x + randomRadius * Math.cos(randomAngle),
+            y:mouse.y + randomRadius * Math.sin(randomAngle),
+            radius: Math.floor(Math.random() * 30) + 10,
+        }
+        overlaping = false;
+        for (let i = 0; i < particles.length; i++) {
+            let previousParticle = particles[ i ];
+            let dx = particle.x - previousParticle.x;
+            let dy = particle.y - previousParticle.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < previousParticle.radius + particle.radius) {
+                overlaping = true;
+                break;
+            }
+        }
+        if (!overlaping) {
+            particles.unshift(new Particle(particle.x, particle.y, particle.radius));
+        }
+        counter++;
     }
 }
+
+    // for (let i = 0; i < numberOfParticles; i++) {
+    //     particles.unshift(new Particle(mouse.x, mouse.y, 20));
+    // }
 
 handleOverlap();
 
